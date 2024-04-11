@@ -4,7 +4,7 @@
 [ ! -d $HOME/.config/regish ] && mkdir $HOME/.config/regish
 [ ! -s $HOME/.config/regish/register.csv ] && touch $HOME/.config/regish/register.csv && echo "epoch,subadd,amount" >>$HOME/.config/regish/register.csv
 
-ballad="$HOME/.config/regish/balance.csv"
+ballad="$HOME/.config/regish/register.csv"
 poem="$HOME/.config/regish/tmp"
 epoch=$(date +%s)
 
