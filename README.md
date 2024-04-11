@@ -19,7 +19,7 @@ REGISH
 Accounting -- done right in your shell.
 
 Usage:
-   regish -[h/b/t]
+   regish -[h/r/t/b]
 
 Options:
    -h | --help

@@ -13,7 +13,7 @@ help() {
 	echo "Accounting -- done right in your shell."
 	echo ""
 	echo "Usage: "
-	echo "   regish -[h/b/t]"
+	echo "   regish -[h/r/t/b]"
 	echo ""
 	echo "Options: "
 	echo "   -h | --help"
