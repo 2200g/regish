@@ -5,6 +5,7 @@
 [ ! -s $HOME/.config/regish/register.csv ] && touch $HOME/.config/regish/register.csv && echo "epoch,subadd,amount" >>$HOME/.config/regish/register.csv
 
 ballad="$HOME/.config/regish/balance.csv"
+poem="$HOME/.config/regish/tmp"
 epoch=$(date +%s)
 
 help() {
@@ -21,6 +22,8 @@ help() {
 	echo "     View the account's transactions."
 	echo "   -t | --transact  {+/- AMOUNT}"
 	echo "     Make a transaction."
+	echo "   -b | --balance"
+	echo "     View account balance."
 	echo ""
 }
 
@@ -40,6 +43,18 @@ transact() {
 	echo "$epoch,$addsub,$amount" >>$ballad
 }
 
+balance() {
+	sum=0
+	cat $ballad | tail -n +2 | while IFS="," read -r column1 column2 column3; do
+		sum=$(
+			echo "scale=4;$sum$column2$column3" | bc
+		)
+		echo "$sum" >>$poem
+	done
+	echo "REGISH -- Balance"
+	echo "Total: $(cat $poem | tail -n1)"
+}
+
 while [[ $1 ]]; do
 	case $1 in
 	"-h")
@@ -48,6 +63,14 @@ while [[ $1 ]]; do
 		;;
 	"--help")
 		help
+		exit
+		;;
+	"-b")
+		balance
+		exit
+		;;
+	"--balance")
+		balance
 		exit
 		;;
 	"-r")
