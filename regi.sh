@@ -117,3 +117,5 @@ while [[ $1 ]]; do
 	echo "Use the --help flag for help."
 	exit 1
 done
+balance
+exit 10
